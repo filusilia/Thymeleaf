@@ -4,11 +4,9 @@
 
 页面中我们可能需要导入其他模板文件,类似于页眉页脚,菜单等.
 
-在Thymeleaf 中，我们可以使用`th:fragment`属性来定义一个模板。
+在Thymeleaf 中，我们可以使用`th:fragment`属性来定义一个模板。
 
 我们可以新建一个简单的页尾模板，如：/WEB-INF/templates/footer.html，内容如下：
-
-
 
 ```js
 <!DOCTYPE html>
@@ -25,8 +23,6 @@
 
 `copy`的片段，接着我们可以使用`th:insert`或者`th:replace`属性来使用它.\(同时`th:include`,也可以引入模板,但会在未来版本中删除这个属性\).
 
-
-
 ```js
 <body>
  ...
@@ -36,8 +32,6 @@
 ```
 
 `th:insert 引入需要表达式`\(`~{...}`\),上面例子中是一个非复杂的表达式,这种表达式也可以简写成:
-
-
 
 ```js
 <body>
@@ -49,7 +43,7 @@
 
 ### 模板语法
 
-其中`th:insert `中的参数格式为templatename::\[domselector\],  
+其中`th:insert`中的参数格式为templatename::\[domselector\],  
 其中templatename是模板名（如footer），domselector是可选的dom选择器。如果只写templatename，不写domselector，则会加载整个模板。
 
 ~{templatename} 会加载整个模板
@@ -59,8 +53,6 @@
 ### 不使用`th:fragment`引入模板
 
 通过强大的dom选择器，我们可以在不添加任何Thymeleaf属性的情况下定义模板：
-
-
 
 ```js
 ...
@@ -72,8 +64,6 @@
 
 可以使用id等属性引用模板,引用方式与css类似.
 
-
-
 ```js
 <body>
   ...  
@@ -81,8 +71,6 @@
  </div>
 </body>
 ```
-
-
 
 ### `th:insert 与 th:replace`\(与`th:include`\)的不同点
 
@@ -111,18 +99,16 @@ And what is the difference between`th:insert`and`th:replace`\(and`th:include`, n
     ...
     <div th:insert="footer :: copy">
     </div>
-    
+
     <div th:replace="footer :: copy">
     </div>
-    
+
     <div  th:include="footer :: copy">
     </div>
 </body>
 ```
 
 下面是引用结果:
-
-
 
 ```
 <body>
@@ -132,16 +118,18 @@ And what is the difference between`th:insert`and`th:replace`\(and`th:include`, n
         &copy; 2011 The Good Thymes Virtual Grocery
         </footer>
     </div>
-    
+
     <footer>
         &copy; 2011 The Good Thymes Virtual Grocery  
     </footer>
-        
+
     <div>
         &copy; 2011 The Good Thymes Virtual Grocery  
     </div>
 </body>
 ```
+
+## 8.2 Parameterizable fragment signatures \(可带参数的片段标签\)
 
 
 
