@@ -18,7 +18,7 @@ Thymeleaf Document Chinese
 
 7.
 
-8.  8.1.complete
+8   1.complete
 
 9.
 
